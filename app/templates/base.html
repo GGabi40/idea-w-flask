@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title>
+        {% block title %}
+            Ideas | 
+        {% endblock %}
+    </title>
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block scripts %}
+        {{ super() }}
+    {% endblock %}
+
+{% endblock %}
+
+{# EXPLICACIÓN
+ 
+{% extends 'bootstrap/base.html' %} : extiende plantilla Bootstrap
+        Esto significa que está utilizando una plantilla base de Bootstrap que contiene 
+        estilos y estructura comunes a todo el sitio.
+
+
+----- BLOCK HEAD -----
+
+{% block head %}
+{% endblock %}  -> bloque reemplaza (o extiende) el bloque head de la plantilla base.
+                . {{ super() }}: llama al contenido original de head en bootstrap/base.html
+                . <title>: Define el titulo, permite que las plantillas hijas cambien el título 
+                    de cada página específica si así se desea.
+
+
+----- BLOCK BODY -----
+{% block body %}
+{% endblock %}   -> bloque reemplaza (o extiende) el bloque body de la plantilla base.
+                    .  NavBar: incluye un archivo llamado navbar.html
+                    .  content: bloque vacío que se podrá personalizar en cada plantilla
+                    hija para mostrar contenido específico de cada página.
+                    .  {{ super() }}: llama a los scripts originales del bloque scripts en la
+                     plantilla base. Permite que se carguen scripts predeterminados de
+                     bootstrap.
+
+
+Esto mejora la reutilización de código y facilita la gestión de la estructura de tu sitio.
+#}

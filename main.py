@@ -1,13 +1,14 @@
 from app import create_app
 from app.migrate import init_db
 
-app = create_app()
+from flask import render_template
 
+app = create_app()
 
 
 @app.route('/')
 def index():
-    return "Hola!"
+    return render_template('index.html')
 
 
 
