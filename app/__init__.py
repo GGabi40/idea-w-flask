@@ -5,6 +5,8 @@ from .database import db # importando los modelos de tablas de la bbdd
 
 from flask_bootstrap import Bootstrap # importa bootstrap
 
+from .auth import auth # autenticación del usuario
+
 
 """ Crea la app de Flask """
 def create_app():
@@ -12,6 +14,7 @@ def create_app():
     
     bootstrap = Bootstrap(app) # inicializa bootstrap
     app.config.from_object(Config) # utilizando config importado
+    app.register_blueprint(auth)
     
     db.init_app(app)
     

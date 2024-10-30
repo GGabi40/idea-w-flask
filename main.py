@@ -9,7 +9,6 @@ app = create_app()
 
 @app.route('/')
 def index():
-    flash("¡Este es un mensaje de prueba!", category='error')
     return render_template('index.html')
 
 
