@@ -1,7 +1,7 @@
 from app import create_app
 from app.migrate import init_db
 
-from flask import render_template
+from flask import render_template, flash
 
 app = create_app()
 
@@ -9,6 +9,7 @@ app = create_app()
 
 @app.route('/')
 def index():
+    flash("¡Este es un mensaje de prueba!", category='error')
     return render_template('index.html')
 
 
@@ -29,6 +30,8 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_server_error():
     return render_template('errors/error500.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
