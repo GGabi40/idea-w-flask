@@ -30,9 +30,11 @@ Valida direcciones de correo electrónico, asegura que emails sean válidos.
 
 
 ---------------------
-# Instalar extensión
-## SQLite
+# Instalar extensión (VsCode)
+## SQLite 
+_(Opcional)_
 Permite ver los archivos .db en forma de tabla
+
 
 _(Me descargué DBeaver para ver las tablas)_
 
@@ -56,7 +58,7 @@ Ejemplo:
         return render_template('index.html')
 
 ---------------------
-# Carpetas:
+# Carpetas Importantes:
 ## Src o App
 Es el núcleo de tu aplicación Flask. Aquí es donde resides el código fuente de la aplicación, organizando los módulos, paquetes y recursos necesarios para su funcionamiento.
 La estructura típica de la carpeta incluye:
@@ -87,3 +89,32 @@ Plantilla Base: Muchas aplicaciones incluyen una plantilla base (como base.html)
 Templates Específicos:  Puedes tener múltiples archivos de plantilla (por ejemplo, index.html, login.html, profile.html) que contienen el HTML específico para cada vista.
 
 Uso de bloques: Jinja2 permite definir bloques en las plantillas, lo que facilita la reutilización de código. Por ejemplo, puedes definir un bloque content en tu plantilla base y luego llenarlo con contenido específico en tus plantillas extendidas.
+
+---------------------
+# Jerarquía de Carpetas:
+## Se recomienda:
+
+    /proyecto/
+    │
+    ├── app/ (o src/)             # Carpeta principal de la aplicación
+    │   ├── __init__.py           # Inicialización de la app
+    │   ├── config.py             # Configuración de la aplicación
+    │   ├── database.py           # Manejo de la base de datos
+    │   ├── models.py             # Definición de modelos de datos
+    │   ├── routes.py             # Rutas de la aplicación
+    │   ├── views.py              # Vistas de la aplicación
+    │   ├── auth/                 # Blueprint para autenticación
+    │   │   ├── __init__.py       # Inicialización del blueprint
+    │   │   ├── views.py          # Vistas de autenticación
+    │   ├── templates/            # Plantillas HTML
+    │   │   ├── base.html         # Plantilla base
+    │   │   ├── index.html        # Plantilla de la página principal
+    │   │   ├── navbar.html       # Plantilla de navegación
+    │   ├── static/               # Archivos estáticos (CSS, JS, imágenes)
+    │   │   ├── css/              # Archivos CSS
+    │   │   ├── js/               # Archivos JavaScript
+    │   │   ├── img/              # Imágenes
+    │
+    ├── main.py                   # Punto de entrada de la aplicación
+    ├── requirements.txt          # Dependencias del proyecto
+    └── README.md                 # Documentación del proyecto
