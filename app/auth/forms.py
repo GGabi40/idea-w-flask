@@ -11,8 +11,8 @@ class RegisterForm(FlaskForm):
     email = EmailField("Correo", validators=[DataRequired(), Email(), Length(min=5, max=30)])
     username = StringField("Username", validators=[DataRequired(), Length(min=5, max=10)])
     cellphone = StringField("Telefono", validators=[DataRequired(), Length(min=7, max=20)])
-    password = PasswordField("Nueva Contraseña", validators=[DataRequired(), Length(min=6, max=10), EqualTo('password_confirm')])
-    password_confirm = PasswordField("Confirmar Contraseña", validators=[DataRequired(), Length(min=6, max=10)])
+    password = PasswordField("Nueva Contraseña", validators=[DataRequired(), Length(min=3, max=10), EqualTo('password_confirm')])
+    password_confirm = PasswordField("Confirmar Contraseña", validators=[DataRequired(), Length(min=3, max=10)])
     
     submit = SubmitField("Registrarme")
 
@@ -20,7 +20,7 @@ class RegisterForm(FlaskForm):
 """ Formulario de Login """
 class LoginForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired(), Length(min=5, max=10)])
-    password = PasswordField("Ingrese Contraseña", validators=[DataRequired(), Length(min=6, max=10)])
+    password = PasswordField("Ingrese Contraseña", validators=[DataRequired(), Length(min=3, max=10)])
 
     submit = SubmitField("Login")
     

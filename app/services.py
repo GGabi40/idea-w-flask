@@ -2,7 +2,7 @@ from .database import *
 
 """ Retornar usuario a partir del username """
 def get_user_by_username(username):
-    return User.query.filter_by(username=username)
+    return User.query.filter_by(username=username).first()
 
 
 """ Registra un usuario nuevo en la BBDD """
