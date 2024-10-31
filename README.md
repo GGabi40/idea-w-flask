@@ -118,3 +118,77 @@ Uso de bloques: Jinja2 permite definir bloques en las plantillas, lo que facilit
     ├── main.py                   # Punto de entrada de la aplicación
     ├── requirements.txt          # Dependencias del proyecto
     └── README.md                 # Documentación del proyecto
+
+---------------------
+# Métodos impotantes:
+## * Para la Autenticación y Sesiones con Flask-SQLAlchemy y Flask-Login:
+
+    login_user(user)
+Inicia una sesión de usuario al recibir el objeto user y almacena su autenticación en la sesión.
+ Ejemplo: __login_user(user_model)__
+
+    logout_user()
+Finaliza la sesión del usuario actual, eliminando su autenticación de la sesión. Ejemplo: __logout_user()__
+
+    current_user
+Representa el usuario actualmente autenticado en la sesión. Es útil para acceder a los atributos del usuario y verificar su estado, como __current_user.is_authenticated__
+
+    UserMixin(clase)
+Extiende el modelo User para incluir los atributos requeridos como __is_authenticated__, __is_active__, __get_id()__, etc., necesarios para manejar la sesión.
+
+
+## * SQLAlchemy - Métodos CRUD para Modelos de Datos:
+
+### Crear (add) - CREATE
+    
+    db.session.add(instance)
+Añade una nueva instancia de modelo (como un usuario o cualquier otro objeto) a la sesión.
+Ejemplo:
+
+    new_user = User(username="example", email="example@example.com")
+    db.session.add(new_user)
+    db.session.commit()
+
+
+### Leer (Consultar) - READ
+
+    Model.query.all()
+Devuelve todos los registros de la tabla.
+
+    Model.query.filter_by(attribute=value).first()
+Busca el primer registro que coincida con el valor de un atributo.
+
+    Model.query.get(id)
+Encuentra un registro por su id.
+
+### Actualizar - UPDATE
+
+    Modificar Atributos + commit()
+Se actualiza el atributo de un objeto y se confirma la transacción con commit.
+Ejemplo:
+
+    user = User.query.get(user_id)
+    user.email = "new_email@example.com"
+    db.session.commit()
+
+### Eliminar - DELETE
+
+    db.session.delete(instance)
+Elimina un registro de la base de datos.
+Ejemplo:
+
+    user = User.query.get(user_id)
+    db.session.delete(user)
+    db.session.commit()
+
+
+## Métodos Adicionales:
+
+    db.create_all()
+Crea todas las tablas definidas en los modelos.
+
+    db.drop_all()
+Elimina todas las tablas en la base de datos.
+
+    db.session.rollback()
+Revierte los cambios en caso de error antes de confirmar (commit) la sesión.
