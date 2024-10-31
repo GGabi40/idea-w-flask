@@ -16,7 +16,7 @@ def register_user(user_data):
         username=user_data['username'],
         cellphone=user_data['cellphone']
     )
-    user.set_password(user_data['password'])
+    user.setPassword(user_data['password'])
     
     db.session.add(user)
     db.session.commit()
